@@ -3,6 +3,7 @@
 $route = get_route();
 
 if($route == 'app/db-init') return true;
+if($route == 'app/gateway') return true;
     // if(stringContains(url(),"localhost") || stringContains(url(),"z-techno"))
     //     return true;
     // else

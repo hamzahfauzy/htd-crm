@@ -8,7 +8,7 @@ $db   = new Database($conn);
             <div class="page-inner py-5">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>
-                        <h2 class="text-white pb-2 fw-bold">Edit Kustomer : <?=$data->name?></h2>
+                        <h2 class="text-white pb-2 fw-bold">Edit Bisnis : <?=$business->name?></h2>
                         <h5 class="text-white op-7 mb-2">Memanajemen data Kustomer</h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
@@ -23,25 +23,43 @@ $db   = new Database($conn);
                     <div class="card">
                         <div class="card-body">
                             <form action="" method="post">
+                            <div class="form-group">
+                                    <label for="">Kustomer</label>
+                                    <select name="business[customer_id]" class="form-control" disabled>
+                                        <option value="" selected readonly>- Pilih Kustomer -</option>
+                                        <?php foreach($customers as $customer): ?>
+                                            <option value="<?=$customer->id?>" <?=$customer->id==$business->customer_id?'selected=""':''?>><?=$customer->name?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Paket</label>
+                                    <select name="business[package_id]" class="form-control" disabled>
+                                        <option value="" selected readonly>- Pilih Paket -</option>
+                                        <?php foreach($packages as $package): ?>
+                                            <option value="<?=$package->id?>" <?=$package->id==$business->package_id?'selected=""':''?>><?=$package->name?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <input type="text" name="customers[name]" class="form-control" value="<?=$data->name?>" required>
+                                    <input type="text" name="business[name]" class="form-control" required value="<?=$business->name?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">No. Handphone</label>
-                                    <input type="text" name="customers[phone]" class="form-control" required value="<?=$data->phone?>">
+                                    <input type="text" name="business[phone]" class="form-control" required value="<?=$business->phone?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Alamat</label>
-                                    <textarea name="customers[address]" class="form-control" required><?=$data->address?></textarea>
+                                    <textarea name="business[address]" class="form-control" required><?=$business->address?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Username</label>
-                                    <input type="text" name="users[username]" class="form-control" required value="<?=$data->user->username?>">
+                                    <label for="">Token</label>
+                                    <input type="text" name="business[token]" class="form-control" required value="<?=$business->token?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Password</label>
-                                    <input type="password" name="users[password]" class="form-control">
+                                    <label for="">URL</label>
+                                    <input type="text" name="business[business_url]" class="form-control" required value="<?=$business->business_url?>">
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-primary">Submit</button>

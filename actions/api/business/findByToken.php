@@ -3,11 +3,11 @@
 $conn  = conn();
 $db    = new Database($conn);
 
-$token = $_GET['token'];
+$token = $_POST['token'];
+$note  = $_POST['note'];
 
-$business = $db->single('business',[
-    'token' => $token
-]);
+$db->query = "SELECT business.*, packages.name package_name, packages.note note FROM business JOIN packages ON packages.id = business.package_id WHERE packages.note = '$note' AND business.token = '$token'";
+$business = $db->exec('single');
 
 if(!$business)
 {
