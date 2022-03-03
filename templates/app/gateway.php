@@ -36,7 +36,7 @@
                         <form action="" method="post" onsubmit="return false">
                             <div class="form-group">
                                 <input type="text" name="token" id="token" class="form-control mb-2" placeholder="Token Disini...">
-                                <button class="btn btn-primary btn-block btn-round" onclick="submitForm()">Masuk</button>
+                                <button class="btn btn-primary btn-block btn-round btn-submit" onclick="submitForm()">Masuk</button>
                             </div>
                         </form>
                     </div>
@@ -63,6 +63,8 @@
         .then(res => {
             if(res.status == 'success')
             {
+                document.querySelector('.btn-submit').innerHTML = 'Berhasil'
+                window.localStorage.setItem('token',res.data.token)
                 window.location = res.data.business_url
             }
             else
