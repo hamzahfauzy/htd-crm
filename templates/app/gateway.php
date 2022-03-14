@@ -45,6 +45,9 @@
         </div>
     </div>
     <script>
+    <?php if(isset($_GET['reset'])): ?>
+    window.localStorage.removeItem('token')
+    <?php endif ?>
     var localToken = window.localStorage.getItem('token')
     
     if(localToken) init(localToken)
