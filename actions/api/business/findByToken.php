@@ -14,7 +14,7 @@ if(!$business)
     echo json_encode([
         'message' => 'business not found.',
         'status'  => 'fail',
-        'data'    => null
+        'data'    => []
     ]);
     die;
 }
